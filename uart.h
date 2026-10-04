@@ -1,4 +1,4 @@
-// ハードウェアの番地はここには書かない！使い方だけを公開する
+// Hardware addresses should not be here! Expose only the interfaces
 void uart_init();
 void uart_putc(char c);
-char uart_getc();
+char uart_getc();

@@ -1,0 +1,7 @@
+# Enable UART
+enable_uart=1
+# Disable Bluetooth and route PL011 UART to GPIO 14/15 as primary UART
+dtoverlay=disable-bt
+# Lock core frequency to stabilize UART clock
+core_freq=250
+
