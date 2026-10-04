@@ -1,0 +1,15 @@
+# 1. アセンブリのコンパイル
+arm-none-eabi-gcc -c -mcpu=arm926ej-s -g boot.s -o boot.o
+
+# 2. 修正したC言語のコンパイル
+arm-none-eabi-gcc -c -mcpu=arm926ej-s -fno-builtin -g main.c -o main.o
+
+# 3. リンク
+arm-none-eabi-ld -T linker.ld boot.o main.o -o kernel.elf
+
+# 4. バイナリの生成
+arm-none-eabi-objcopy -O binary kernel.elf kernel.bin
+
+
+qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -net user,hostfwd=tcp::5022-:22 -kernel kernel.bin -no-reboot
+
